@@ -6,19 +6,23 @@ class Header extends React.Component {
         user: ''
     };
 
-    onSubmitNew = async (e) => {
+    onSubmitNew = (e) => {
         e.preventDefault();
 
         const proxyurl = "https://cors-anywhere.herokuapp.com/";
         const url = `https://api.mojang.com/users/profiles/minecraft/${this.state.user}?at=${Date.now()}`;
 
-        fetch(proxyurl + url)
+        fetch(proxyurl + url, {
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        })
         .then((resp) => resp.json())
         .then(function(data) {
-          console.log(data);
+            sessionStorage.setItem('minecraftUUID', data.id);
         })
         .catch(function(error) {
-          console.log(error);
+            console.log(error);
         }); 
 
     }
