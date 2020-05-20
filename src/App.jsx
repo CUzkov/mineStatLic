@@ -2,17 +2,21 @@ import React from "react"
 import DataStatBlock from './components/DataStatBlock.jsx'
 import Header from './components/Header.jsx'
 
-const userUUIDContext = React.createContext('');
-
 class App extends React.Component {
 
   render(){
     return(
       <div>
-        <userUUIDContext.Provider>
-          <Header />
-          <DataStatBlock />
-        </userUUIDContext.Provider>
+        <Header />
+        <DataStatBlock category="minecraft:broken"/>
+        <DataStatBlock category="minecraft:crafted"/>
+        <DataStatBlock category="minecraft:custom"/>
+        <DataStatBlock category="minecraft:dropped"/>
+        <DataStatBlock category="minecraft:killed"/>
+        <DataStatBlock category="minecraft:killed_by"/>
+        <DataStatBlock category="minecraft:mined"/>
+        <DataStatBlock category="minecraft:picked_up"/>
+        <DataStatBlock category="minecraft:used"/>
       </div>
     );
   }

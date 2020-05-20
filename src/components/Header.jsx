@@ -21,7 +21,7 @@ class Header extends React.Component {
         .then(function(data) {
             sessionStorage.setItem('minecraftUUID', data.id);
         })
-        .catch(function(error) {
+        .catch( (error) => {
             console.log(error);
         }); 
 
