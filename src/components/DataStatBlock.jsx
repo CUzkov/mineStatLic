@@ -1,11 +1,19 @@
-import React, { Component } from "react"
+import React from "react"
 import fireBaseApp from "./fireBaseApp";
 
-class DataStatBlock extends Component {
+class DataStatBlock extends React.Component {
 
   state = {
     timerIdForData: null,
     timerOfChange: null,
+  }
+
+  toUUIDFormat(){
+    return sessionStorage.getItem('minecraftUUID').substring(0, 8) + '-'
+            + sessionStorage.getItem('minecraftUUID').substring(8, 12) + '-'
+            + sessionStorage.getItem('minecraftUUID').substring(12, 16) + '-'
+            + sessionStorage.getItem('minecraftUUID').substring(16, 20) + '-'
+            + sessionStorage.getItem('minecraftUUID').substring(20, 32);
   }
 
   static userUUID = '';
@@ -19,16 +27,8 @@ class DataStatBlock extends Component {
     
   }
 
-  toUUIDFormat(){
-    return sessionStorage.getItem('minecraftUUID').substring(0, 8) + '-'
-            + sessionStorage.getItem('minecraftUUID').substring(8, 12) + '-'
-            + sessionStorage.getItem('minecraftUUID').substring(12, 16) + '-'
-            + sessionStorage.getItem('minecraftUUID').substring(16, 20) + '-'
-            + sessionStorage.getItem('minecraftUUID').substring(20, 32);
-  }
-
   componentDidMount(){
-
+    sessionStorage.setItem('minecraftUUID', 'eeb8ea31b5c94a69baee8ba8c22f04a9');
     this.setState({timerIdForData: setInterval(this.refreshData, 500)});
     this.setState({timerOfChange: setInterval(() => {
       if(sessionStorage.getItem('minecraftUUID') !== this.userUUID
