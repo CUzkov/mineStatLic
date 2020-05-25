@@ -1,6 +1,6 @@
 import React from "react"
 import Header from './components/Header.jsx'
-import DataBlock from './components/DataBlock'
+import DataBlock from './components/DataFullTable.jsx'
 
 class App extends React.Component {
 

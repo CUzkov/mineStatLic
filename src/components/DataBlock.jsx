@@ -1,150 +1,26 @@
-import React from "react";
-import DataStatBlock from './DataStatBlock.jsx';
-import Profile from './profile.jsx';
-import { CSSTransition } from 'react-transition-group';
+import React from 'react'
+import ListOfData from './ListOfData'
+import { CSSTransition } from 'react-transition-group'
 
-class DataBlock extends React.Component {
+class DataBlock extends React.Component{
 
-    constructor(){
-        super();
-
-        this.handleOnClickDataBlock = this.handleOnClickDataBlock.bind(this);
-    }
-
-    state = {
-        isOpenDataBlock: false
-    }
-
-    static blockNumb = '0';
-
-    handleOnClickDataBlock = (e) => {
-        e.currentTarget.classList.toggle('notRemove');
-        if(!this.state.isOpenDataBlock){
-            this.setState({isOpenDataBlock: true});
-            this.blockNumb = e.currentTarget.id;
-        }
-        else{
-            this.setState({isOpenDataBlock: false});
-            this.blockNumb = '0';
-        }
-    }
 
     render(){
         return(
-            <div>
-                <div className="dataBody">
-                    <div className="profile">
-                        <Profile />
+            <CSSTransition
+                in={this.props.isNeedRenderBlock}
+                timeout={500}
+                className="my-node DataStatBlock"
+                mountOnEnter
+                unmountOnExit>
+                    <div onClick={this.props.handle}
+                        id={this.props.id}>
+                        <ListOfData 
+                            category="minecraft:broken" 
+                            ifOpen={this.props.isNeedRenderList}
+                            blockData={this.props.blockData}/>
                     </div>
-                    <div className="dataTable">
-                        <div className="dataString">
-                            <CSSTransition
-                                in={(!this.state.isOpenDataBlock || this.blockNumb === '1')}
-                                timeout={500}
-                                className="my-node DataStatBlock"
-                                mountOnEnter
-                                unmountOnExit>
-                                    <div onClick={this.handleOnClickDataBlock}
-                                        id="1">
-                                        <DataStatBlock category="minecraft:broken" ifOpen={this.state.isOpenDataBlock}/>
-                                    </div>
-                            </CSSTransition>
-                            <CSSTransition
-                                in={(!this.state.isOpenDataBlock || this.blockNumb === '2')}
-                                timeout={500}
-                                className="my-node DataStatBlock"
-                                mountOnEnter
-                                unmountOnExit>
-                                    <div onClick={this.handleOnClickDataBlock}
-                                        id="2">
-                                        <DataStatBlock category="minecraft:crafted" ifOpen={this.state.isOpenDataBlock}/>
-                                    </div>
-                            </CSSTransition>
-                            <CSSTransition
-                                in={(!this.state.isOpenDataBlock || this.blockNumb === '3')}
-                                timeout={500}
-                                className="my-node DataStatBlock"
-                                mountOnEnter
-                                unmountOnExit>
-                                    <div onClick={this.handleOnClickDataBlock}
-                                        id="3">
-                                        <DataStatBlock category="minecraft:custom" ifOpen={this.state.isOpenDataBlock}/>
-                                    </div>
-                            </CSSTransition>
-                        </div>
-                        <div className="dataString">
-                            <CSSTransition
-                                in={(!this.state.isOpenDataBlock || this.blockNumb === '4')}
-                                timeout={500}
-                                className="my-node DataStatBlock"
-                                mountOnEnter
-                                unmountOnExit>
-                                    <div onClick={this.handleOnClickDataBlock}
-                                        id="4">
-                                        <DataStatBlock category="minecraft:dropped" ifOpen={this.state.isOpenDataBlock}/>
-                                    </div>
-                            </CSSTransition>
-                            <CSSTransition
-                                in={(!this.state.isOpenDataBlock || this.blockNumb === '5')}
-                                timeout={500}
-                                className="my-node DataStatBlock"
-                                mountOnEnter
-                                unmountOnExit>
-                                    <div onClick={this.handleOnClickDataBlock}
-                                        id="5">
-                                        <DataStatBlock category="minecraft:killed" ifOpen={this.state.isOpenDataBlock}/>
-                                    </div>
-                            </CSSTransition>
-                            <CSSTransition
-                                in={(!this.state.isOpenDataBlock || this.blockNumb === '6')}
-                                timeout={500}
-                                className="my-node DataStatBlock"
-                                mountOnEnter
-                                unmountOnExit>
-                                    <div onClick={this.handleOnClickDataBlock}
-                                        id="6">
-                                        <DataStatBlock category="minecraft:killed_by" ifOpen={this.state.isOpenDataBlock}/>
-                                    </div>
-                            </CSSTransition>
-                        </div>
-                        <div className="dataString">
-                            <CSSTransition
-                                in={(!this.state.isOpenDataBlock || this.blockNumb === '7')}
-                                timeout={500}
-                                className="my-node DataStatBlock"
-                                mountOnEnter
-                                unmountOnExit>
-                                    <div onClick={this.handleOnClickDataBlock}
-                                        id="7">
-                                        <DataStatBlock category="minecraft:mined" ifOpen={this.state.isOpenDataBlock}/>
-                                    </div>
-                            </CSSTransition>
-                            <CSSTransition
-                                in={(!this.state.isOpenDataBlock || this.blockNumb === '8')}
-                                timeout={500}
-                                className="my-node DataStatBlock"
-                                mountOnEnter
-                                unmountOnExit>
-                                    <div onClick={this.handleOnClickDataBlock}
-                                        id="8">
-                                        <DataStatBlock category="minecraft:picked_up" ifOpen={this.state.isOpenDataBlock}/>
-                                    </div>
-                            </CSSTransition>
-                            <CSSTransition
-                                in={(!this.state.isOpenDataBlock || this.blockNumb === '9')}
-                                timeout={500}
-                                className="my-node DataStatBlock"
-                                mountOnEnter
-                                unmountOnExit>
-                                    <div onClick={this.handleOnClickDataBlock}
-                                        id="9">
-                                        <DataStatBlock category="minecraft:used" ifOpen={this.state.isOpenDataBlock}/>
-                                    </div>
-                            </CSSTransition>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </CSSTransition>
         );
     }
 }
