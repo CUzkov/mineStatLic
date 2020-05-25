@@ -46,7 +46,7 @@ class DataBlock extends React.Component {
                                 unmountOnExit>
                                     <div onClick={this.handleOnClickDataBlock}
                                         id="1">
-                                        <DataStatBlock category="minecraft:broken"/>
+                                        <DataStatBlock category="minecraft:broken" ifOpen={this.state.isOpenDataBlock}/>
                                     </div>
                             </CSSTransition>
                             <CSSTransition
@@ -57,7 +57,7 @@ class DataBlock extends React.Component {
                                 unmountOnExit>
                                     <div onClick={this.handleOnClickDataBlock}
                                         id="2">
-                                        <DataStatBlock category="minecraft:crafted"/>
+                                        <DataStatBlock category="minecraft:crafted" ifOpen={this.state.isOpenDataBlock}/>
                                     </div>
                             </CSSTransition>
                             <CSSTransition
@@ -68,7 +68,7 @@ class DataBlock extends React.Component {
                                 unmountOnExit>
                                     <div onClick={this.handleOnClickDataBlock}
                                         id="3">
-                                        <DataStatBlock category="minecraft:custom"/>
+                                        <DataStatBlock category="minecraft:custom" ifOpen={this.state.isOpenDataBlock}/>
                                     </div>
                             </CSSTransition>
                         </div>
@@ -81,7 +81,7 @@ class DataBlock extends React.Component {
                                 unmountOnExit>
                                     <div onClick={this.handleOnClickDataBlock}
                                         id="4">
-                                        <DataStatBlock category="minecraft:dropped"/>
+                                        <DataStatBlock category="minecraft:dropped" ifOpen={this.state.isOpenDataBlock}/>
                                     </div>
                             </CSSTransition>
                             <CSSTransition
@@ -92,7 +92,7 @@ class DataBlock extends React.Component {
                                 unmountOnExit>
                                     <div onClick={this.handleOnClickDataBlock}
                                         id="5">
-                                        <DataStatBlock category="minecraft:killed"/>
+                                        <DataStatBlock category="minecraft:killed" ifOpen={this.state.isOpenDataBlock}/>
                                     </div>
                             </CSSTransition>
                             <CSSTransition
@@ -103,7 +103,7 @@ class DataBlock extends React.Component {
                                 unmountOnExit>
                                     <div onClick={this.handleOnClickDataBlock}
                                         id="6">
-                                        <DataStatBlock category="minecraft:killed_by"/>
+                                        <DataStatBlock category="minecraft:killed_by" ifOpen={this.state.isOpenDataBlock}/>
                                     </div>
                             </CSSTransition>
                         </div>
@@ -116,7 +116,7 @@ class DataBlock extends React.Component {
                                 unmountOnExit>
                                     <div onClick={this.handleOnClickDataBlock}
                                         id="7">
-                                        <DataStatBlock category="minecraft:mined"/>
+                                        <DataStatBlock category="minecraft:mined" ifOpen={this.state.isOpenDataBlock}/>
                                     </div>
                             </CSSTransition>
                             <CSSTransition
@@ -127,7 +127,7 @@ class DataBlock extends React.Component {
                                 unmountOnExit>
                                     <div onClick={this.handleOnClickDataBlock}
                                         id="8">
-                                        <DataStatBlock category="minecraft:picked_up"/>
+                                        <DataStatBlock category="minecraft:picked_up" ifOpen={this.state.isOpenDataBlock}/>
                                     </div>
                             </CSSTransition>
                             <CSSTransition
@@ -138,7 +138,7 @@ class DataBlock extends React.Component {
                                 unmountOnExit>
                                     <div onClick={this.handleOnClickDataBlock}
                                         id="9">
-                                        <DataStatBlock category="minecraft:used"/>
+                                        <DataStatBlock category="minecraft:used" ifOpen={this.state.isOpenDataBlock}/>
                                     </div>
                             </CSSTransition>
                         </div>
