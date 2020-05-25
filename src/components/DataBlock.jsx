@@ -13,10 +13,12 @@ class DataBlock extends React.Component{
                 className="my-node DataStatBlock"
                 mountOnEnter
                 unmountOnExit>
-                    <div onClick={this.props.handle}
+                    <div
+                        onClick={this.props.handle}
                         id={this.props.id}>
-                        <ListOfData 
-                            category="minecraft:broken" 
+                        <ListOfData
+                            dict={this.props.dict} 
+                            blockName={this.props.blockName} 
                             ifOpen={this.props.isNeedRenderList}
                             blockData={this.props.blockData}/>
                     </div>
