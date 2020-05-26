@@ -30,12 +30,10 @@ class DataFullTable extends React.Component {
    
     static blockNumb = '0';
     static userUUID = '';
-	static statusOfRefreshData = false;
+    static statusOfRefreshData = false;
+    static dict;
 
     handleOnClickDataBlock = (e) => {
-
-        console.log("Вызван обработчик!!!");
-
         e.currentTarget.classList.toggle('notRemove');
         if(!this.state.isOpenDataBlock){
             this.setState({isOpenDataBlock: true});
@@ -59,18 +57,26 @@ class DataFullTable extends React.Component {
 
             var DBRef = fireBaseApp.database().ref(`players/${this.toUUIDFormat()}/stats`);
 
-            DBRef.on( 'value', (data) => {
-
-                console.log(data.val());
-                
+            DBRef.on( 'value', (data) => {              
                 this.setState({allDataMass: data.val()});
                 this.statusOfRefreshData = false;
 		    });
 
 		}
-	}
+    }
+    
+    getDict(){
+
+        var DBRef = fireBaseApp.database().ref(`dict`);
+
+        DBRef.on( 'value', (data) => {
+            this.dict = data.val();
+		});
+
+    }
 
     componentDidMount(){
+        this.getDict();
 		sessionStorage.setItem('minecraftUUID', 'eeb8ea31b5c94a69baee8ba8c22f04a9');
 		this.setState({timerIdForData: setInterval(this.refreshData, 500)});
 		this.setState({timerOfChange: setInterval(() => {
@@ -86,12 +92,11 @@ class DataFullTable extends React.Component {
         return(
             <div>
                 <div className="dataBody">
-                    <div className="profile">
-                        <Profile />
-                    </div>
+                    <Profile />
                     <div className="dataTable">
                         <DataString 
                             handle={this.handleOnClickDataBlock}
+                            dict={this.dict}
 
                             firstBlockBool={(this.state.isOpenDataBlock && (this.blockNumb === '1'))}
                             secondBlockBool={(this.state.isOpenDataBlock && (this.blockNumb === '2'))}
@@ -109,11 +114,12 @@ class DataFullTable extends React.Component {
                             secondId="2"
                             thirdId="3"
                             
-                            firstName=""
-                            secondName=""
-                            thirdName=""/>
+                            firstName="Сломанные вещи"
+                            secondName="Созданные вещи"
+                            thirdName="Прочее"/>
                         <DataString 
                             handle={this.handleOnClickDataBlock}
+                            dict={this.dict}
 
                             firstBlockBool={(this.state.isOpenDataBlock && (this.blockNumb === '4'))}
                             secondBlockBool={(this.state.isOpenDataBlock && (this.blockNumb === '5'))}
@@ -131,11 +137,12 @@ class DataFullTable extends React.Component {
                             secondId="5"
                             thirdId="6"
                             
-                            firstName=""
-                            secondName=""
-                            thirdName=""/>
+                            firstName="Выброшенные вещи"
+                            secondName="Убитые существа"
+                            thirdName="Убит существами раз"/>
                         <DataString 
                             handle={this.handleOnClickDataBlock}
+                            dict={this.dict}
 
                             firstBlockBool={(this.state.isOpenDataBlock && (this.blockNumb === '7'))}
                             secondBlockBool={(this.state.isOpenDataBlock && (this.blockNumb === '8'))}
@@ -153,9 +160,9 @@ class DataFullTable extends React.Component {
                             secondId="8"
                             thirdId="9"
                             
-                            firstName=""
-                            secondName=""
-                            thirdName=""/>
+                            firstName="Выкапано"
+                            secondName="Подобрано"
+                            thirdName="Использовано"/>
                     </div>
                 </div>
             </div>

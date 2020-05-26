@@ -9,6 +9,7 @@ class DataString extends React.Component{
             <div className="dataString">
                 <DataBlock 
                     handle={this.props.handle}
+                    dict={this.props.dict}
                     isNeedRenderList={this.props.firstBlockBool}
                     blockData={this.props.firstBlockData}
                     isNeedRenderBlock={this.props.firstBlockBool2}
@@ -16,6 +17,7 @@ class DataString extends React.Component{
                     blockName={this.props.firstName}/>
                 <DataBlock 
                     handle={this.props.handle}
+                    dict={this.props.dict}
                     isNeedRenderList={this.props.secondBlockBool}
                     blockData={this.props.secondBlockData}
                     isNeedRenderBlock={this.props.secondBlockBool2}
@@ -23,6 +25,7 @@ class DataString extends React.Component{
                     blockName={this.props.secondName}/>
                 <DataBlock 
                     handle={this.props.handle}
+                    dict={this.props.dict}
                     isNeedRenderList={this.props.thirdBlockBool}
                     blockData={this.props.thirdBlockData}
                     isNeedRenderBlock={this.props.thirdBlockBool2}

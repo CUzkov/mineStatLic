@@ -14,10 +14,10 @@ function NumberList(props) {
 		key={id}
 		in={true}
 		timeout={1000}
-		className="adad"
+		className="listString"
 		mountOnEnter
 		unmountOnExit>
-			<li>{id}</li>
+			<li>{props.dict[id]}: {data}</li>
 		</CSSTransition>
 	
 	));  
@@ -29,9 +29,11 @@ class ListOfData extends React.Component {
 	render(){
 		return(
 			<div>
-				{this.props.category}
+				{this.props.blockName}
 				{this.props.ifOpen &&
-					<NumberList numbers={this.props.blockData} />
+					<NumberList 
+						numbers={this.props.blockData} 
+						dict={this.props.dict}/>
 				}
 			</div>
 		);
