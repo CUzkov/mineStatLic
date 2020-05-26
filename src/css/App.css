@@ -1,8 +1,9 @@
 .Header{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    margin: 0px 100px;
+	justify-content: space-between;
+	margin-left: 100px;
+	margin-right: 100px;
 }
 
 .DataStatBlock{
@@ -27,12 +28,6 @@
 	justify-content: space-between;
 	width: 1100px;
 	height: 400px;
-}
-
-.profile{
-    width: 100px;
-    height: 100px;
-    background-color: black;
 }
 
 .dataBody{
@@ -82,4 +77,43 @@
 	width: 600px;
 	border: solid 1px black;
 	margin: 2px 2px;
+}
+
+.profileName{
+	text-align: center;
+}
+
+.profileInside{
+	box-sizing: border-box;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+    width: 300px;
+    height: 400px;
+	border: solid 1px black;
+	border-radius: 25px;
+	padding: 15px 15px;
+}
+
+.profileSkin{
+	margin: auto;	
+}
+
+.searchButton{
+	margin: 0px 10px;
+}
+
+.leftHeader{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: auto 0px;
+}
+
+.githubImage{
+	margin: auto;
+}
+
+.findPlayer{
+	margin: auto 0px;
 }

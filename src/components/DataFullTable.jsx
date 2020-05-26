@@ -34,9 +34,6 @@ class DataFullTable extends React.Component {
     static dict;
 
     handleOnClickDataBlock = (e) => {
-
-        console.log("Вызван обработчик!!!");
-
         e.currentTarget.classList.toggle('notRemove');
         if(!this.state.isOpenDataBlock){
             this.setState({isOpenDataBlock: true});
@@ -60,10 +57,7 @@ class DataFullTable extends React.Component {
 
             var DBRef = fireBaseApp.database().ref(`players/${this.toUUIDFormat()}/stats`);
 
-            DBRef.on( 'value', (data) => {
-
-                console.log(data.val());
-                
+            DBRef.on( 'value', (data) => {              
                 this.setState({allDataMass: data.val()});
                 this.statusOfRefreshData = false;
 		    });
@@ -98,9 +92,7 @@ class DataFullTable extends React.Component {
         return(
             <div>
                 <div className="dataBody">
-                    <div className="profile">
-                        <Profile />
-                    </div>
+                    <Profile />
                     <div className="dataTable">
                         <DataString 
                             handle={this.handleOnClickDataBlock}
