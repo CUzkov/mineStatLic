@@ -9,14 +9,10 @@ class Header extends React.Component {
     onSubmitNew = (e) => {
         e.preventDefault();
 
-        //const proxyurl = "https://cors-anywhere.herokuapp.com/";
+        const proxyurl = "https://cors-anywhere.herokuapp.com/";
         const url = `https://api.mojang.com/users/profiles/minecraft/${this.state.user}?at=${Date.now()}`;
 
-        fetch(`https://api.mojang.com/users/profiles/minecraft/${this.state.user}?at=${Date.now()}`, {
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest'
-            }
-        })
+        fetch(proxyurl + url)
         .then((resp) => resp.json())
         .then(function(data) {
             sessionStorage.setItem('minecraftUUID', data.id);

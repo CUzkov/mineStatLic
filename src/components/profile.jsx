@@ -38,14 +38,10 @@ class Profile extends React.Component {
 
             this.userUUID = sessionStorage.getItem('minecraftUUID');
 
-            //const proxyurl = "https://cors-anywhere.herokuapp.com/";
+            const proxyurl = "https://cors-anywhere.herokuapp.com/";
             const url = `https://sessionserver.mojang.com/session/minecraft/profile/${this.userUUID}`;
     
-            fetch(url, {
-                headers: {
-                    'X-Requested-With': 'XMLHttpRequest'
-                }
-            })
+            fetch(proxyurl + url)
             .then((resp) => resp.json())
             .then( (data) => {
                 this.setState({palyerData: data});
