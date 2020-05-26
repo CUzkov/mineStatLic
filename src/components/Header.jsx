@@ -12,7 +12,7 @@ class Header extends React.Component {
         const proxyurl = "https://cors-anywhere.herokuapp.com/";
         const url = `https://api.mojang.com/users/profiles/minecraft/${this.state.user}?at=${Date.now()}`;
 
-        fetch(proxyurl + url, {
+        fetch(url, {
             headers: {
                 'X-Requested-With': 'XMLHttpRequest'
             }
