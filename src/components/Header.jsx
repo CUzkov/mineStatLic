@@ -28,7 +28,10 @@ class Header extends React.Component {
     render(){
         return(
             <div className="Header">
-                <h1 className="mainLabel">Minecraft server statistics</h1>
+                <div>
+                    <h1 className="mainLabel">Minecraft server statistics (для работы нужен vpn)</h1>
+                </div>
+                
                 <div className="leftHeader">
                     <form 
                         onSubmit={this.onSubmitNew}

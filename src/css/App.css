@@ -117,3 +117,7 @@
 .findPlayer{
 	margin: auto 0px;
 }
+
+body{
+	min-width: 1450px;
+}
