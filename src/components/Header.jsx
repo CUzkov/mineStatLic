@@ -40,7 +40,7 @@ class Header extends React.Component {
                             type="text" 
                             value={this.state.user} 
                             onChange={this.handleChangeEmail} 
-                            placeholder="Никнейм игрока" 
+                            placeholder="Никнейм игрока (например maxzbox1)" 
                             id="nickname"
                             required/>
                         <button 
