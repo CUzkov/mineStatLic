@@ -37,7 +37,8 @@ class Header extends React.Component {
                         onSubmit={this.onSubmitNew}
                         className="findPlayer">
                         <input 
-                            type="text" 
+                            type="text"
+                            className="inputNickname" 
                             value={this.state.user} 
                             onChange={this.handleChangeEmail} 
                             placeholder="Никнейм игрока (например maxzbox1)" 

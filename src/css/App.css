@@ -121,3 +121,7 @@
 body{
 	min-width: 1450px;
 }
+
+.inputNickname{
+	width: 255px;
+}
