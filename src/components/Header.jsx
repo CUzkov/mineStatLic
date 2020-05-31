@@ -3,11 +3,15 @@ import React from 'react'
 class Header extends React.Component {
 
     state = {
-        user: ''
+        user: '',
+        isNotFount: false,
+        refreshStatus: false
     };
 
     onSubmitNew = (e) => {
         e.preventDefault();
+
+        this.setState({refreshStatus: true});
 
         const proxyurl = "https://cors-anywhere.herokuapp.com/";
         const url = `https://api.mojang.com/users/profiles/minecraft/${this.state.user}?at=${Date.now()}`;
@@ -17,10 +21,16 @@ class Header extends React.Component {
         .then(function(data) {
             sessionStorage.setItem('minecraftUUID', data.id);
         })
+        .then(() => {
+            this.setState({refreshStatus: false});
+        })
         .catch( (error) => {
-            console.log(error);
+            this.setState({isNotFount: true});
+            this.setState({refreshStatus: false});
+            setTimeout(() => {
+                this.setState({isNotFount: false});
+            }, 2000);
         }); 
-
     }
 
     handleChangeEmail = (event) => { this.setState({user: event.target.value}); }
@@ -39,14 +49,24 @@ class Header extends React.Component {
                         <input 
                             type="text"
                             className="inputNickname" 
-                            value={this.state.user} 
-                            onChange={this.handleChangeEmail} 
-                            placeholder="Никнейм игрока (например maxzbox1)" 
+                            onChange={this.handleChangeEmail}
+                            value={
+                                this.state.isNotFount ? '' : this.state.user
+                            } 
+                            placeholder={
+                                this.state.isNotFount ? "Такого игрока не существует!" : "Никнейм игрока (например maxzbox1)"
+                            }
+                            disabled={
+                                this.state.isNotFount || this.state.refreshStatus
+                            }
                             id="nickname"
                             required/>
                         <button 
                             type="submit"
-                            className="searchButton">
+                            className="searchButton"
+                            disabled={
+                                this.state.isNotFount || this.state.refreshStatus
+                            }>
                             Найти игрока</button>    
                     </form>
                     <a 

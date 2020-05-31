@@ -3,25 +3,30 @@ import { CSSTransition } from 'react-transition-group';
 
 function NumberList(props) {
 
-	let mass = [];
-	for (var key in props.numbers){
-		mass.push( {id: [key], data: props.numbers[key]} );
-	} 
-	const numbers = mass;
-	const listItems = numbers.map(({id, data}) => (
+	if(props.numbers){
+		let mass = [];
+		for (var key in props.numbers){
+			mass.push( {id: [key], data: props.numbers[key]} );
+		} 
+		const numbers = mass;
+		const listItems = numbers.map(({id, data}) => (
+			
+			<CSSTransition
+			key={id}
+			in={true}
+			timeout={1000}
+			className="listString"
+			mountOnEnter
+			unmountOnExit>
+				<li>{props.dict[id]}: {data}</li>
+			</CSSTransition>
 		
-		<CSSTransition
-		key={id}
-		in={true}
-		timeout={1000}
-		className="listString"
-		mountOnEnter
-		unmountOnExit>
-			<li>{props.dict[id]}: {data}</li>
-		</CSSTransition>
-	
-	));  
-	return (<ul>{listItems}</ul>);
+		));  
+		return (<ul>{listItems}</ul>);
+	}
+	else{
+		return (<p>Для этой категории нет статистики ╯︵╰,</p>);
+	}
   }
 
 class ListOfData extends React.Component {
