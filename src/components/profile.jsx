@@ -1,4 +1,5 @@
-import React from "react"
+import React from 'react'
+import loadImg from '../img/25.svg'
 
 class Profile extends React.Component {
 
@@ -20,19 +21,22 @@ class Profile extends React.Component {
 
     componentDidMount(){
         sessionStorage.setItem('minecraftUUID', 'eeb8ea31b5c94a69baee8ba8c22f04a9');
-        this.setState({timerIdForData: setInterval(this.refreshData, 1000)});
+        this.setState({timerIdForData: setInterval(this.refreshData, 500)});
         this.setState({timerOfChange: setInterval(() => {
             if(sessionStorage.getItem('minecraftUUID') !== this.userUUID
                 && !this.statusOfRefreshData){
-                this.setState({timerIdForData: setInterval(this.refreshData, 1000)})
+                this.setState({timerIdForData: setInterval(this.refreshData, 500)})
             }
-        }, 1500)});
+        }, 600)});
     }
 
     refreshData(){
         if(sessionStorage.getItem('minecraftUUID')){
 
             this.statusOfRefreshData = true;
+
+            this.setState({palyerData: {}});
+            this.setState({skinData: ''});
 
             clearInterval(this.state.timerIdForData);
 
@@ -59,10 +63,10 @@ class Profile extends React.Component {
         return(
             <div className="profileInside">
                 <div className="profileSkin">
-                    <img src={this.state.skinData} alt=""/>
+                    { this.state.skinData ? <img src={this.state.skinData} alt=""/> : <img src={loadImg} alt=""/> }
                 </div>
                 <div className="profileName">
-                    {this.state.palyerData.name}
+                    { this.state.skinData ? <div>{this.state.palyerData.name}</div> : <img src={loadImg} alt="" height={20}/> }
                 </div>
             </div>
         );

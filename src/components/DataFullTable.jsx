@@ -57,8 +57,13 @@ class DataFullTable extends React.Component {
 
             var DBRef = fireBaseApp.database().ref(`players/${this.toUUIDFormat()}/stats`);
 
-            DBRef.on( 'value', (data) => {              
-                this.setState({allDataMass: data.val()});
+            DBRef.on( 'value', (data) => {     
+                if(data.val() === null){
+                    this.setState({allDataMass: {}});
+                }
+                else{
+                    this.setState({allDataMass: data.val()});
+                }
                 this.statusOfRefreshData = false;
 		    });
 
