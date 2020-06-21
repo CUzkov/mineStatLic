@@ -13,10 +13,9 @@ class Header extends React.Component {
 
         this.setState({refreshStatus: true});
 
-        const proxyurl = "https://cors-anywhere.herokuapp.com/";
         const url = `https://api.mojang.com/users/profiles/minecraft/${this.state.user}?at=${Date.now()}`;
 
-        fetch(proxyurl + url)
+        fetch(url)
         .then((resp) => resp.json())
         .then(function(data) {
             sessionStorage.setItem('minecraftUUID', data.id);
