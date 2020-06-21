@@ -9,16 +9,21 @@ class Header extends React.Component {
     };
 
     onSubmitNew = (e) => {
+        
         e.preventDefault();
 
         this.setState({refreshStatus: true});
 
+        //https://allorigins.win/
+
+        const proxy = 'https://api.allorigins.win/get?url=';
         const url = `https://api.mojang.com/users/profiles/minecraft/${this.state.user}?at=${Date.now()}`;
 
-        fetch(url)
+        fetch(proxy  + url)
         .then((resp) => resp.json())
         .then(function(data) {
-            sessionStorage.setItem('minecraftUUID', data.id);
+            const respp = JSON.parse(data.contents);
+            sessionStorage.setItem('minecraftUUID', respp.id);
         })
         .then(() => {
             this.setState({refreshStatus: false});

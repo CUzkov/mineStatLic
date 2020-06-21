@@ -42,14 +42,15 @@ class Profile extends React.Component {
 
             this.userUUID = sessionStorage.getItem('minecraftUUID');
 
-            const proxyurl = "https://cors-anywhere.herokuapp.com/";
+            const proxyurl = 'https://api.allorigins.win/get?url=';
             const url = `https://sessionserver.mojang.com/session/minecraft/profile/${this.userUUID}`;
 
             fetch(proxyurl + url)
             .then((resp) => resp.json())
             .then( (data) => {
-                 this.setState({palyerData: data});
-                 this.setState({skinData: `https://visage.surgeplay.com/full/${data.id}?tilt=0`});
+                const respp = JSON.parse(data.contents);
+                this.setState({palyerData: respp});
+                this.setState({skinData: `https://visage.surgeplay.com/full/${respp.id}?tilt=0`});
             })
             .catch( (error) => {
                 console.log(error);
