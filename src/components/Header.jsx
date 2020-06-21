@@ -9,17 +9,21 @@ class Header extends React.Component {
     };
 
     onSubmitNew = (e) => {
+        
         e.preventDefault();
 
         this.setState({refreshStatus: true});
 
-        const proxyurl = "https://cors-anywhere.herokuapp.com/";
+        //https://allorigins.win/
+
+        const proxy = 'https://api.allorigins.win/get?url=';
         const url = `https://api.mojang.com/users/profiles/minecraft/${this.state.user}?at=${Date.now()}`;
 
-        fetch(proxyurl + url)
+        fetch(proxy  + url)
         .then((resp) => resp.json())
         .then(function(data) {
-            sessionStorage.setItem('minecraftUUID', data.id);
+            const respp = JSON.parse(data.contents);
+            sessionStorage.setItem('minecraftUUID', respp.id);
         })
         .then(() => {
             this.setState({refreshStatus: false});
@@ -39,7 +43,7 @@ class Header extends React.Component {
         return(
             <div className="Header">
                 <div>
-                    <h1 className="mainLabel">Minecraft server statistics (для работы нужен vpn)</h1>
+                    <h1 className="mainLabel">Minecraft server statistics</h1>
                 </div>
                 
                 <div className="leftHeader">
@@ -54,7 +58,7 @@ class Header extends React.Component {
                                 this.state.isNotFount ? '' : this.state.user
                             } 
                             placeholder={
-                                this.state.isNotFount ? "Такого игрока не существует!" : "Никнейм игрока (например maxzbox1)"
+                                this.state.isNotFount ? "Такого игрока не существует!" : "Никнейм игрока"
                             }
                             disabled={
                                 this.state.isNotFount || this.state.refreshStatus
