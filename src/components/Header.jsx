@@ -43,7 +43,7 @@ class Header extends React.Component {
         return(
             <div className="Header">
                 <div>
-                    <h1 className="mainLabel">Minecraft server statistics (для работы нужен vpn)</h1>
+                    <h1 className="mainLabel">Minecraft server statistics</h1>
                 </div>
                 
                 <div className="leftHeader">
@@ -58,7 +58,7 @@ class Header extends React.Component {
                                 this.state.isNotFount ? '' : this.state.user
                             } 
                             placeholder={
-                                this.state.isNotFount ? "Такого игрока не существует!" : "Никнейм игрока (например maxzbox1)"
+                                this.state.isNotFount ? "Такого игрока не существует!" : "Никнейм игрока"
                             }
                             disabled={
                                 this.state.isNotFount || this.state.refreshStatus
